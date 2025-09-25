@@ -13,7 +13,7 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      background-image: url('https://images.squarespace-cdn.com/content/v1/5dd32c3d8fb7427902c41339/1576900572851-FSJVQ8FYMBF9UE7TMM6U/the-vault-photos-19_49250358102_o.jpg?format=1000w');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -24,72 +24,31 @@
       position: relative;
       display: flex;
       justify-content: center;
-      align-items: flex-start;
-      gap: 10px;
+      align-items: center;
     }
 
-    .widget-left {
-      width: 200px;
-      height: 400px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 15px;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .widget-left iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .widget-right {
-      width: 200px;
-      height: 400px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 15px;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      position: relative;
-    }
-
-    .widget-right iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .timer-widget-right {
-      position: absolute;
-      bottom: -80px;
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
       left: 0;
       width: 100%;
-      height: 60px;
-      z-index: 15;
-      border: none;
-      background: transparent;
-    }
-
-    .timer-widget-right iframe {
-      width: 100%;
       height: 100%;
-      border: none;
-      background: transparent;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
     }
 
     .game-container {
       max-width: 500px;
-      flex: 1;
+      width: 100%;
       background: rgba(10, 15, 30, 0.9);
       border-radius: 20px;
       padding: 30px;
       backdrop-filter: blur(10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-      margin: 0 5px;
       position: relative;
       border: 2px solid rgba(184, 134, 11, 0.5);
+      margin: 20px;
     }
 
     .game-container::before {
@@ -171,83 +130,6 @@
       width: 100%;
       min-height: 260px;
       perspective: 1000px;
-    }
-
-    .actions-widget {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 180px;
-      height: 80px;
-      z-index: 1000;
-      border: none;
-      background: transparent;
-      pointer-events: none;
-    }
-
-    .firework-widget-bottom {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 400px;
-      height: 300px;
-      z-index: 1000;
-      border: none;
-      background: transparent;
-      pointer-events: none;
-    }
-
-    .firework-widget-bottom iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
-    }
-
-    .timer-widget-bottom {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 150px;
-      height: 60px;
-      z-index: 1000;
-      border: none;
-      background: transparent;
-    }
-
-    .timer-widget-bottom iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
-    }
-
-    .coindrop-widget-bottom {
-      position: fixed;
-      bottom: 200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 400px;
-      height: 200px;
-      z-index: 500;
-      border: none;
-      background: transparent;
-      pointer-events: none;
-    }
-
-    .coindrop-widget-bottom iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
-    }
-
-    .actions-widget iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      background: transparent;
     }
 
     /* Styles pour le lingot d'or 3D */
@@ -683,40 +565,6 @@
     }
     .gold-coindrop iframe { width:100%; height:100%; border: none; background: transparent; }
 
-    @media (max-width: 1200px) {
-      body {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .widget-left, .widget-right {
-        width: 100%;
-        max-width: 500px;
-        height: 300px;
-        margin-bottom: 15px;
-      }
-      
-      .game-container {
-        margin: 0;
-      }
-
-      .attack-modes {
-        gap: 6px;
-      }
-
-      .attack-mode-btn {
-        padding: 8px 12px;
-        font-size: 11px;
-        min-width: 50px;
-      }
-
-      .gold-coindrop {
-        bottom: -120px;
-        width: 260px;
-        height: 180px;
-      }
-    }
-
     @media (max-width: 480px) {
       .game-container {
         padding: 20px;
@@ -755,10 +603,6 @@
       h1 {
         font-size: 2em;
       }
-      
-      .widget-left, .widget-right {
-        height: 250px;
-      }
 
       .attack-mode-btn {
         padding: 6px 10px;
@@ -775,26 +619,6 @@
   </style>
 </head>
 <body>
-  <div class="actions-widget">
-    <iframe src="https://tikfinity.zerody.one/widget/myactions?cid=2136326&screen=1" frameborder="0"></iframe>
-  </div>
-  
-  <div class="coindrop-widget-bottom">
-    <iframe src="https://tikfinity.zerody.one/widget/coindrop?cid=2136326" frameborder="0"></iframe>
-  </div>
-  
-  <div class="firework-widget-bottom">
-    <iframe src="https://tikfinity.zerody.one/widget/firework?cid=2136326" frameborder="0"></iframe>
-  </div>
-  
-  <div class="timer-widget-bottom">
-    <iframe src="https://tikfinity.zerody.one/widget/timer?cid=2136326" frameborder="0"></iframe>
-  </div>
-  
-  <div class="widget-left">
-    <iframe src="https://tikfinity.zerody.one/widget/topliker?cid=2136326" frameborder="0"></iframe>
-  </div>
-
   <div class="game-container" id="gameContainer">
     <div class="combo-indicator" id="comboIndicator">COMBO x0</div>
 
@@ -809,11 +633,6 @@
         <div class="side left"></div>
       </div>
       <div class="hammer" id="hammer">🔨</div>
-
-      <!-- WIDGET COINDROP intégré sous le lingot -->
-      <div class="gold-coindrop" aria-hidden="true">
-        <iframe src="https://tikfinity.zerody.one/widget/coindrop?cid=2136326"></iframe>
-      </div>
     </div>
 
     <div class="instructions">
@@ -840,13 +659,6 @@
     <div id="resultContainer" class="hidden result-box">
       <h3>🎉 Lingot Cassé ! 🎉</h3>
       <p id="coinsResult">Vous avez gagné 0 rose !</p>
-    </div>
-  </div>
-
-  <div class="widget-right">
-    <iframe src="https://tikfinity.zerody.one/widget/ranking?cid=2136326" frameborder="0"></iframe>
-    <div class="timer-widget-right">
-      <iframe src="https://tikfinity.zerody.one/widget/timer?cid=2136326" frameborder="0"></iframe>
     </div>
   </div>
 
