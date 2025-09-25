@@ -13,42 +13,33 @@
 
     body {
       font-family: 'Arial', sans-serif;
-      background-image: url('https://images.squarespace-cdn.com/content/v1/5dd32c3d8fb7427902c41339/1576900572851-FSJVQ8FYMBF9UE7TMM6U/the-vault-photos-19_49250358102_o.jpg?format=1000w');
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       color: #fff;
       text-align: center;
       min-height: 100vh;
-      padding: 20px;
+      padding: 10px;
       position: relative;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
+      gap: 10px;
     }
 
     .game-container {
-      max-width: 500px;
       width: 100%;
+      max-width: 500px;
       background: rgba(10, 15, 30, 0.9);
       border-radius: 20px;
-      padding: 30px;
+      padding: 20px;
       backdrop-filter: blur(10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
       position: relative;
       border: 2px solid rgba(184, 134, 11, 0.5);
-      margin: 20px;
+      margin-bottom: 20px;
     }
 
     .game-container::before {
@@ -71,8 +62,8 @@
     }
 
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
+      font-size: 1.8em;
+      margin-bottom: 15px;
       text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
       background: linear-gradient(45deg, #ffd700, #daa520, #b8860b);
       -webkit-background-clip: text;
@@ -81,9 +72,9 @@
     }
 
     .squirrel-logo {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 20px;
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 15px;
       background-image: url('https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/72x72/1f43f.png');
       background-size: contain;
       background-repeat: no-repeat;
@@ -98,8 +89,8 @@
     }
 
     .instructions {
-      margin: 30px 0;
-      padding: 20px;
+      margin: 20px 0;
+      padding: 15px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 15px;
       backdrop-filter: blur(10px);
@@ -107,8 +98,8 @@
     }
 
     .instructions h2 {
-      font-size: 1.8em;
-      margin-bottom: 10px;
+      font-size: 1.4em;
+      margin-bottom: 8px;
       background: linear-gradient(45deg, #ffd700, #daa520);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -116,26 +107,26 @@
     }
 
     .instructions p {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: bold;
       color: #daa520;
     }
 
     .gold-container {
       position: relative;
-      margin: 30px auto;
+      margin: 20px auto;
       display: flex;
       justify-content: center;
       align-items: center;
       width: 100%;
-      min-height: 260px;
+      min-height: 200px;
       perspective: 1000px;
     }
 
     /* Styles pour le lingot d'or 3D */
     .gold-bar-3d {
-      width: 200px;
-      height: 80px;
+      width: 160px;
+      height: 60px;
       margin: 0 auto;
       position: relative;
       transform-style: preserve-3d;
@@ -144,7 +135,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2em;
+      font-size: 1.5em;
       color: #b8860b;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
@@ -154,42 +145,42 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
-      border-radius: 10px;
-      transform: translateZ(20px);
+      border-radius: 8px;
+      transform: translateZ(15px);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
     }
 
     .gold-bar-3d .top {
       position: absolute;
       width: 100%;
-      height: 40px;
+      height: 30px;
       background: linear-gradient(45deg, #daa520, #ffd700, #daa520);
-      border-radius: 10px 10px 0 0;
-      transform: rotateX(90deg) translateZ(20px);
-      top: -20px;
+      border-radius: 8px 8px 0 0;
+      transform: rotateX(90deg) translateZ(15px);
+      top: -15px;
     }
 
     .gold-bar-3d .side {
       position: absolute;
-      width: 40px;
+      width: 30px;
       height: 100%;
       background: linear-gradient(45deg, #b8860b, #daa520, #b8860b);
-      transform: rotateY(90deg) translateZ(100px);
-      right: -20px;
+      transform: rotateY(90deg) translateZ(80px);
+      right: -15px;
     }
 
     .gold-bar-3d .side.left {
-      transform: rotateY(-90deg) translateZ(100px);
-      left: -20px;
+      transform: rotateY(-90deg) translateZ(80px);
+      left: -15px;
       right: auto;
     }
 
     .gold-bar-3d.pink .front {
       background: linear-gradient(45deg, #ff69b4, #ff1493, #ff69b4);
-      box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
       animation: pinkGlow 2s ease-in-out infinite alternate;
     }
 
@@ -202,8 +193,8 @@
     }
 
     @keyframes pinkGlow {
-      0% { box-shadow: 0 0 30px rgba(255, 105, 180, 0.8); }
-      100% { box-shadow: 0 0 40px rgba(255, 20, 147, 1); }
+      0% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }
+      100% { box-shadow: 0 0 30px rgba(255, 20, 147, 1); }
     }
 
     .gold-bar-3d.hit {
@@ -241,12 +232,12 @@
     /* Animations pour le marteau */
     .hammer {
       position: absolute;
-      width: 80px;
-      height: 80px;
-      font-size: 3em;
+      width: 60px;
+      height: 60px;
+      font-size: 2.5em;
       z-index: 10;
-      top: -40px;
-      right: -20px;
+      top: -30px;
+      right: -15px;
       transform-origin: bottom center;
       transition: transform 0.3s ease;
       pointer-events: none;
@@ -258,7 +249,7 @@
 
     @keyframes hammerHit {
       0% { transform: rotate(0deg) translateY(0); }
-      50% { transform: rotate(-45deg) translateY(20px); }
+      50% { transform: rotate(-45deg) translateY(15px); }
       100% { transform: rotate(0deg) translateY(0); }
     }
 
@@ -385,7 +376,7 @@
 
     .impact-effect {
       position: absolute;
-      font-size: 2.5em;
+      font-size: 2em;
       pointer-events: none;
       z-index: 3;
       animation: impactPop 1s ease-out forwards;
@@ -402,14 +393,14 @@
     .attack-modes {
       display: flex;
       justify-content: center;
-      gap: 6px;
-      margin: 20px 0;
+      gap: 5px;
+      margin: 15px 0;
       flex-wrap: wrap;
     }
 
     .attack-mode-btn {
       padding: 8px 12px;
-      font-size: 11px;
+      font-size: 14px;
       cursor: pointer;
       border: 2px solid rgba(184, 134, 11, 0.5);
       border-radius: 18px;
@@ -435,12 +426,14 @@
     }
 
     .controls {
-      margin: 20px 0;
+      margin: 15px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     button {
-      padding: 15px 30px;
-      margin: 10px;
+      padding: 12px 25px;
       font-size: 16px;
       cursor: pointer;
       border: none;
@@ -473,19 +466,19 @@
     }
 
     #message {
-      margin: 20px 0;
-      font-size: 1.2em;
+      margin: 15px 0;
+      font-size: 1em;
       font-weight: bold;
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-      min-height: 30px;
+      min-height: 25px;
       color: #daa520;
     }
 
     .result-box {
       background: linear-gradient(135deg, rgba(184, 134, 11, 0.9), rgba(218, 165, 32, 0.9));
-      padding: 20px;
+      padding: 15px;
       border-radius: 15px;
-      margin: 20px 0;
+      margin: 15px 0;
       border: 2px solid rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(10px);
       animation: fadeInUp 0.5s ease;
@@ -538,82 +531,79 @@
 
     .combo-indicator {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 10px;
+      right: 10px;
       background: linear-gradient(45deg, #b8860b, #daa520);
-      padding: 10px 18px;
-      border-radius: 25px;
+      padding: 8px 15px;
+      border-radius: 20px;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 0.9em;
       display: none;
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       border: 2px solid rgba(255,255,255,0.2);
     }
 
-    /* styles du widget coindrop intégré sous le lingot */
-    .gold-coindrop {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -140px;
-      width: 320px;
-      height: 220px;
-      z-index: 6;
-      pointer-events: none;
-      background: transparent;
-      border: none;
-    }
-    .gold-coindrop iframe { width:100%; height:100%; border: none; background: transparent; }
-
-    @media (max-width: 480px) {
+    /* Styles pour les écrans plus larges (tablettes) */
+    @media (min-width: 768px) {
       .game-container {
-        padding: 20px;
-        margin: 10px;
-      }
-      
-      .gold-bar-3d {
-        width: 150px;
-        height: 60px;
-        font-size: 1.5em;
-      }
-      
-      .gold-bar-3d .side {
-        width: 30px;
-        transform: rotateY(90deg) translateZ(75px);
-      }
-      
-      .gold-bar-3d .side.left {
-        transform: rotateY(-90deg) translateZ(75px);
-      }
-      
-      .gold-bar-3d .top {
-        height: 30px;
-        transform: rotateX(90deg) translateZ(15px);
-        top: -15px;
-      }
-      
-      .hammer {
-        width: 60px;
-        height: 60px;
-        font-size: 2.5em;
-        top: -30px;
-        right: -15px;
+        padding: 30px;
+        max-width: 600px;
       }
       
       h1 {
+        font-size: 2.2em;
+      }
+      
+      .gold-bar-3d {
+        width: 200px;
+        height: 80px;
         font-size: 2em;
       }
-
-      .attack-mode-btn {
-        padding: 6px 10px;
-        font-size: 10px;
-        min-width: 45px;
+      
+      .gold-bar-3d .side {
+        width: 40px;
+        transform: rotateY(90deg) translateZ(100px);
       }
+      
+      .gold-bar-3d .side.left {
+        transform: rotateY(-90deg) translateZ(100px);
+      }
+      
+      .gold-bar-3d .top {
+        height: 40px;
+        transform: rotateX(90deg) translateZ(20px);
+        top: -20px;
+      }
+      
+      .hammer {
+        width: 80px;
+        height: 80px;
+        font-size: 3em;
+        top: -40px;
+        right: -20px;
+      }
+      
+      .controls {
+        flex-direction: row;
+        justify-content: center;
+      }
+      
+      button {
+        padding: 15px 30px;
+      }
+    }
 
-      .gold-coindrop {
-        bottom: -100px;
-        width: 220px;
-        height: 140px;
+    /* Styles pour les écrans très larges */
+    @media (min-width: 1024px) {
+      body {
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 20px;
+      }
+      
+      .game-container {
+        margin: 0 10px;
       }
     }
   </style>
@@ -969,7 +959,7 @@
         coinsResult.innerHTML = `
           <strong>🎉 BRAVO ! 🎉</strong><br>
           Tu as cassé le lingot d'or !<br>
-          <div style="font-size: 4em; margin: 10px 0; color: #feca57;">${recompense}</div>
+          <div style="font-size: 3em; margin: 10px 0; color: #feca57;">${recompense}</div>
           <strong>Ta récompense : ${recompense} rose${recompense > 1 ? 's' : ''} !</strong>
         `;
         resultContainer.classList.remove("hidden");
