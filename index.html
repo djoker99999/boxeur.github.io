@@ -982,7 +982,8 @@
     }
 
     function initGame() {
-      maxHP = Math.floor(Math.random() * (30000 - 10000 + 1)) + 10000;
+      // MODIFICATION ICI : Points de vie entre 5000 et 20000
+      maxHP = Math.floor(Math.random() * (20000 - 5000 + 1)) + 5000;
       currentHP = maxHP;
       coupCounter = 0;
       totalHits = 0;
