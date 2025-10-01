@@ -88,6 +88,110 @@
       50% { transform: translateY(-5px) scale(1.05); }
     }
 
+    .difficulty-selector {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+      padding: 0 10px;
+    }
+
+    .difficulty-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .difficulty-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.3;
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .difficulty-btn.easy::before {
+      background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    }
+
+    .difficulty-btn.medium::before {
+      background: linear-gradient(45deg, #FF9800, #FFC107);
+    }
+
+    .difficulty-btn.hard::before {
+      background: linear-gradient(45deg, #F44336, #E91E63);
+    }
+
+    .difficulty-btn.impossible::before {
+      background: linear-gradient(45deg, #8B00FF, #4B0082);
+    }
+
+    .difficulty-btn-image {
+      width: 70px;
+      height: 70px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .difficulty-btn-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+
+    .difficulty-btn.impossible {
+      animation: impossibleBtnGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes impossibleBtnGlow {
+      0% { box-shadow: 0 0 5px rgba(139, 0, 255, 0.5); }
+      100% { box-shadow: 0 0 20px rgba(139, 0, 255, 1); }
+    }
+
+    .difficulty-btn.active {
+      border-color: white;
+      box-shadow: 0 0 15px rgba(255,255,255,0.8);
+      transform: scale(1.05);
+    }
+
+    .difficulty-btn.active::before {
+      opacity: 0.6;
+    }
+
+    .difficulty-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .difficulty-btn.active:hover {
+      transform: scale(1.05) translateY(-2px);
+    }
+
     .instructions {
       margin: 20px 0;
       padding: 15px;
@@ -123,110 +227,113 @@
       perspective: 1000px;
     }
 
-    /* Styles pour le lingot d'or 3D */
-    .gold-bar-3d {
-      width: 160px;
-      height: 60px;
+    /* Nouveau style pour le lingot d'or avec l'image */
+    .gold-bar {
+      width: 200px;
+      height: 100px;
       margin: 0 auto;
+      background-image: url('https://i.ibb.co/gZBv5mk3/6126-Wo-Gy2c-L-Photoroom.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       position: relative;
-      transform-style: preserve-3d;
       transition: all 0.3s ease;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1.2) contrast(1.1);
       z-index: 5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      color: #b8860b;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .gold-bar-3d .front {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, #ffd700, #ffed4a, #ffd700);
-      border-radius: 8px;
-      transform: translateZ(15px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-    }
-
-    .gold-bar-3d .top {
-      position: absolute;
-      width: 100%;
-      height: 30px;
-      background: linear-gradient(45deg, #daa520, #ffd700, #daa520);
-      border-radius: 8px 8px 0 0;
-      transform: rotateX(90deg) translateZ(15px);
-      top: -15px;
-    }
-
-    .gold-bar-3d .side {
-      position: absolute;
-      width: 30px;
-      height: 100%;
-      background: linear-gradient(45deg, #b8860b, #daa520, #b8860b);
-      transform: rotateY(90deg) translateZ(80px);
-      right: -15px;
-    }
-
-    .gold-bar-3d .side.left {
-      transform: rotateY(-90deg) translateZ(80px);
-      left: -15px;
-      right: auto;
-    }
-
-    .gold-bar-3d.pink .front {
-      background: linear-gradient(45deg, #ff69b4, #ff1493, #ff69b4);
-      box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+    .gold-bar.pink {
+      filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8)) brightness(1.2) contrast(1.1) hue-rotate(15deg) saturate(1.5);
       animation: pinkGlow 2s ease-in-out infinite alternate;
     }
 
-    .gold-bar-3d.pink .top {
-      background: linear-gradient(45deg, #c71585, #ff69b4, #c71585);
-    }
-
-    .gold-bar-3d.pink .side {
-      background: linear-gradient(45deg, #8b008b, #c71585, #8b008b);
-    }
-
     @keyframes pinkGlow {
-      0% { box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); }
-      100% { box-shadow: 0 0 30px rgba(255, 20, 147, 1); }
+      0% { filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8)) brightness(1.2) contrast(1.1) hue-rotate(15deg) saturate(1.5); }
+      100% { filter: drop-shadow(0 0 30px rgba(255, 20, 147, 1)) brightness(1.4) contrast(1.2) hue-rotate(25deg) saturate(1.8); }
     }
 
-    .gold-bar-3d.hit {
+    .gold-bar.hit {
       animation: lightHit 0.4s ease-out;
     }
 
-    .gold-bar-3d.heavy-hit {
+    .gold-bar.heavy-hit {
       animation: heavyHit 0.6s ease-out;
     }
 
-    .gold-bar-3d.critical-hit {
+    .gold-bar.critical-hit {
       animation: criticalHit 0.8s ease-out;
     }
 
-    .gold-bar-3d.mega-hit {
+    .gold-bar.mega-hit {
       animation: megaHit 1.2s ease-out;
     }
 
-    .gold-bar-3d.ultra-hit {
+    .gold-bar.ultra-hit {
       animation: ultraHit 1.5s ease-out;
     }
 
-    .gold-bar-3d.cracked .front {
-      filter: brightness(0.7);
+    .gold-bar.cracked {
+      filter: brightness(0.7) drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
       animation: redPulse 1s infinite;
-      background: linear-gradient(45deg, #b8860b, #daa520, #b8860b);
     }
 
-    .gold-bar-3d.broken {
+    .gold-bar.broken {
       opacity: 0.3;
       filter: grayscale(100%) brightness(0.3);
       animation: knockout 1.5s ease-out forwards;
+    }
+
+    /* Styles pour les modes d'attaque avec images */
+    .attack-modes {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .attack-mode-image {
+      width: 110px;
+      height: 110px;
+      cursor: pointer;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      position: relative;
+    }
+
+    .attack-mode-image:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .attack-mode-image.active {
+      border-color: #fff;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    .attack-mode-image img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    }
+
+    .attack-mode-label {
+      font-size: 13px;
+      margin-top: 5px;
+      font-weight: bold;
+      color: #feca57;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
     }
 
     /* Animations pour le marteau */
@@ -320,8 +427,8 @@
     }
 
     @keyframes redPulse {
-      0%, 100% { filter: brightness(0.7); }
-      50% { filter: brightness(0.5); }
+      0%, 100% { filter: brightness(0.7) drop-shadow(0 0 15px rgba(255, 0, 0, 0.8)); }
+      50% { filter: brightness(0.5) drop-shadow(0 0 25px rgba(255, 0, 0, 1)); }
     }
 
     .screen-shake {
@@ -388,41 +495,6 @@
       0% { opacity: 0; transform: scale(0.3) translateY(0); }
       30% { opacity: 1; transform: scale(1.5) translateY(-15px); }
       100% { opacity: 0; transform: scale(1) translateY(-50px); }
-    }
-
-    .attack-modes {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      margin: 15px 0;
-      flex-wrap: wrap;
-    }
-
-    .attack-mode-btn {
-      padding: 8px 12px;
-      font-size: 14px;
-      cursor: pointer;
-      border: 2px solid rgba(184, 134, 11, 0.5);
-      border-radius: 18px;
-      background: rgba(20, 25, 45, 0.8);
-      color: #daa520;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-      min-width: 50px;
-      font-weight: bold;
-    }
-
-    .attack-mode-btn:hover {
-      background: rgba(30, 35, 55, 0.8);
-      transform: translateY(-2px);
-      border-color: #ffd700;
-    }
-
-    .attack-mode-btn.active {
-      background: linear-gradient(45deg, #b8860b, #daa520);
-      border-color: #ffd700;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      color: #fff;
     }
 
     .controls {
@@ -554,25 +626,9 @@
         font-size: 2.2em;
       }
       
-      .gold-bar-3d {
-        width: 200px;
-        height: 80px;
-        font-size: 2em;
-      }
-      
-      .gold-bar-3d .side {
-        width: 40px;
-        transform: rotateY(90deg) translateZ(100px);
-      }
-      
-      .gold-bar-3d .side.left {
-        transform: rotateY(-90deg) translateZ(100px);
-      }
-      
-      .gold-bar-3d .top {
-        height: 40px;
-        transform: rotateX(90deg) translateZ(20px);
-        top: -20px;
+      .gold-bar {
+        width: 250px;
+        height: 125px;
       }
       
       .hammer {
@@ -591,6 +647,16 @@
       button {
         padding: 15px 30px;
       }
+
+      .attack-mode-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      .attack-mode-image img {
+        width: 55px;
+        height: 55px;
+      }
     }
 
     /* Styles pour les écrans très larges */
@@ -606,6 +672,47 @@
         margin: 0 10px;
       }
     }
+
+    @media (max-width: 480px) {
+      .difficulty-selector {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 0 5px;
+      }
+
+      .difficulty-btn-image {
+        width: 60px;
+        height: 60px;
+      }
+
+      .difficulty-btn-label {
+        font-size: 10px;
+      }
+
+      .attack-modes {
+        gap: 5px;
+        padding: 0 5px;
+      }
+
+      .attack-mode-image {
+        width: 85px;
+        height: 85px;
+      }
+
+      .attack-mode-image img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .attack-mode-label {
+        font-size: 11px;
+      }
+
+      .gold-bar {
+        width: 180px;
+        height: 90px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -615,13 +722,28 @@
     <h1>🔨 Casse le Lingot d'Or !</h1>
     <div class="squirrel-logo"></div>
     
-    <div class="gold-container">
-      <div class="gold-bar-3d" id="goldBar">
-        <div class="front">💰</div>
-        <div class="top"></div>
-        <div class="side"></div>
-        <div class="side left"></div>
+    <!-- Sélecteur de niveaux avec images -->
+    <div class="difficulty-selector">
+      <div class="difficulty-btn easy active" data-difficulty="easy">
+        <div class="difficulty-btn-image" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkZIBKVuctd-81US1fPCxkxx5qaA3KNSzRVw&s');"></div>
+        <div class="difficulty-btn-label">Facile</div>
       </div>
+      <div class="difficulty-btn medium" data-difficulty="medium">
+        <div class="difficulty-btn-image" style="background-image: url('https://p16-webcast.tiktokcdn.com/img/maliva/webcast-va/8520d47b59c202a4534c1560a355ae06~tplv-obj.webp');"></div>
+        <div class="difficulty-btn-label">Moyen</div>
+      </div>
+      <div class="difficulty-btn hard" data-difficulty="hard">
+        <div class="difficulty-btn-image" style="background-image: url('https://i.ibb.co/JR5SS5vd/IMG-6570.png');"></div>
+        <div class="difficulty-btn-label">Difficile</div>
+      </div>
+      <div class="difficulty-btn impossible" data-difficulty="impossible">
+        <div class="difficulty-btn-image" style="background-image: url('https://i.ibb.co/5XX6nS2W/unnamed-Photoroom.png');"></div>
+        <div class="difficulty-btn-label">Impossible</div>
+      </div>
+    </div>
+    
+    <div class="gold-container">
+      <div class="gold-bar" id="goldBar"></div>
       <div class="hammer" id="hammer">🔨</div>
     </div>
 
@@ -630,13 +752,32 @@
       <p>Une Rose - Un Coup de Marteau</p>
     </div>
 
+    <!-- Modes d'attaque avec images -->
     <div class="attack-modes">
-      <button id="mode1" class="attack-mode-btn active">1</button>
-      <button id="mode5" class="attack-mode-btn">5</button>
-      <button id="mode10" class="attack-mode-btn">10</button>
-      <button id="mode100" class="attack-mode-btn">100</button>
-      <button id="mode500" class="attack-mode-btn">500</button>
-      <button id="mode1000" class="attack-mode-btn">1000</button>
+      <div id="mode1" class="attack-mode-image active">
+        <img src="https://i.ibb.co/WNXDxn2y/IMG-7354-Photoroom.png" alt="Rose - 1 coup">
+        <div class="attack-mode-label">1 coup</div>
+      </div>
+      <div id="mode10" class="attack-mode-image">
+        <img src="https://i.ibb.co/7JsBRrCn/IMG-5885.png" alt="Rosa - 10 coups">
+        <div class="attack-mode-label">10 coups</div>
+      </div>
+      <div id="mode30" class="attack-mode-image">
+        <img src="https://i.ibb.co/8DMJ0cxy/IMG-7355-Photoroom.png" alt="Donuts - 30 coups">
+        <div class="attack-mode-label">30 coups</div>
+      </div>
+      <div id="mode100" class="attack-mode-image">
+        <img src="https://i.ibb.co/C5M6DHcS/IMG-7356-Photoroom.png" alt="Coeurs - 100 coups">
+        <div class="attack-mode-label">100 coups</div>
+      </div>
+      <div id="mode500" class="attack-mode-image">
+        <img src="https://i.ibb.co/nNy17WfL/IMG-6065.png" alt="Mini Gun - 500 coups">
+        <div class="attack-mode-label">500 coups</div>
+      </div>
+      <div id="mode1000" class="attack-mode-image">
+        <img src="https://i.ibb.co/JMPfpWV/IMG-5851.png" alt="Galaxie - 1000 coups">
+        <div class="attack-mode-label">1000 coups</div>
+      </div>
     </div>
 
     <div class="controls">
@@ -662,6 +803,7 @@
     let isAttacking = false;
     let audioContext = null;
     let isPinkGold = false;
+    let currentDifficulty = "easy";
 
     const goldBar = document.getElementById("goldBar");
     const hammer = document.getElementById("hammer");
@@ -673,6 +815,13 @@
     const comboIndicator = document.getElementById("comboIndicator");
 
     const impactEffects = ["💥", "🔥", "⭐", "💫", "✨", "💢"];
+
+    const difficultyNames = {
+      easy: "facile",
+      medium: "moyen", 
+      hard: "difficile",
+      impossible: "impossible"
+    };
 
     // Système audio
     function initAudioContext() {
@@ -930,7 +1079,7 @@
 
     function updateUI() {
       if (currentHP === 0) {
-        goldBar.className = "gold-bar-3d broken";
+        goldBar.className = "gold-bar broken";
         message.textContent = "💥 Le lingot s'est brisé !";
       } else {
         if (maxHP - currentHP >= 20) {
@@ -941,7 +1090,7 @@
           if (isPinkGold) {
             message.textContent = "✨ LINGOT ROSE SPÉCIAL ! ✨";
           } else {
-            message.textContent = "À tout moment le lingot peut se briser...";
+            message.textContent = `Lingot ${difficultyNames[currentDifficulty]} - À tout moment le lingot peut se briser...`;
           }
         }
       }
@@ -971,7 +1120,7 @@
     function setAttackMode(mode) {
       attackMode = mode;
       
-      document.querySelectorAll('.attack-mode-btn').forEach(btn => {
+      document.querySelectorAll('.attack-mode-image').forEach(btn => {
         btn.classList.remove('active');
       });
       
@@ -981,9 +1130,34 @@
       attackBtn.textContent = `Frapper (${mode} coup${mode > 1 ? 's' : ''})`;
     }
 
+    function setDifficulty(difficulty) {
+      currentDifficulty = difficulty;
+      
+      document.querySelectorAll('.difficulty-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`.difficulty-btn.${difficulty}`).classList.add('active');
+      
+      initGame();
+    }
+
     function initGame() {
-      // MODIFICATION ICI : Points de vie entre 5000 et 20000
-      maxHP = Math.floor(Math.random() * (20000 - 5000 + 1)) + 5000;
+      // Points de vie selon la difficulté
+      switch(currentDifficulty) {
+        case "easy":
+          maxHP = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
+          break;
+        case "medium":
+          maxHP = Math.floor(Math.random() * (20000 - 10000 + 1)) + 10000;
+          break;
+        case "hard":
+          maxHP = Math.floor(Math.random() * (40000 - 20000 + 1)) + 20000;
+          break;
+        case "impossible":
+          maxHP = Math.floor(Math.random() * (80000 - 40000 + 1)) + 40000;
+          break;
+      }
+
       currentHP = maxHP;
       coupCounter = 0;
       totalHits = 0;
@@ -995,12 +1169,12 @@
       
       isPinkGold = Math.random() < 0.1;
       
-      goldBar.className = "gold-bar-3d";
+      goldBar.className = "gold-bar";
       if (isPinkGold) {
         goldBar.classList.add("pink");
         message.textContent = "✨ LINGOT ROSE SPÉCIAL ! ✨";
       } else {
-        message.textContent = `À tout moment le lingot peut se briser...`;
+        message.textContent = `Lingot ${difficultyNames[currentDifficulty]} - À tout moment le lingot peut se briser...`;
       }
       
       resultContainer.classList.add("hidden");
@@ -1016,11 +1190,18 @@
     document.getElementById("resetBtn").addEventListener("click", initGame);
 
     document.getElementById("mode1").addEventListener("click", () => setAttackMode(1));
-    document.getElementById("mode5").addEventListener("click", () => setAttackMode(5));
     document.getElementById("mode10").addEventListener("click", () => setAttackMode(10));
+    document.getElementById("mode30").addEventListener("click", () => setAttackMode(30));
     document.getElementById("mode100").addEventListener("click", () => setAttackMode(100));
     document.getElementById("mode500").addEventListener("click", () => setAttackMode(500));
     document.getElementById("mode1000").addEventListener("click", () => setAttackMode(1000));
+
+    // Sélecteur de difficulté
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        setDifficulty(this.getAttribute('data-difficulty'));
+      });
+    });
 
     // Raccourcis clavier
     document.addEventListener('keydown', (e) => {
@@ -1036,10 +1217,10 @@
           setAttackMode(1);
           break;
         case '2':
-          setAttackMode(5);
+          setAttackMode(10);
           break;
         case '3':
-          setAttackMode(10);
+          setAttackMode(30);
           break;
         case '4':
           setAttackMode(100);
@@ -1053,6 +1234,22 @@
         case 'r':
         case 'R':
           initGame();
+          break;
+        case 'e':
+        case 'E':
+          setDifficulty('easy');
+          break;
+        case 'm':
+        case 'M':
+          setDifficulty('medium');
+          break;
+        case 'd':
+        case 'D':
+          setDifficulty('hard');
+          break;
+        case 'i':
+        case 'I':
+          setDifficulty('impossible');
           break;
       }
     });
