@@ -102,7 +102,7 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
-      border: 3px solid transparent;
+      border: 3px solid rgba(255, 255, 255, 0.3);
       font-size: 14px;
       color: white;
       display: flex;
@@ -111,6 +111,14 @@
       padding: 8px;
       position: relative;
       overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      animation: floatButton 3s ease-in-out infinite;
+    }
+
+    @keyframes floatButton {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.05); }
     }
 
     .difficulty-btn img {
@@ -120,38 +128,15 @@
       filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
     }
 
-    .difficulty-btn.noob {
-      background: linear-gradient(45deg, #87CEEB, #B0E0E6);
-    }
-
-    .difficulty-btn.buchette {
-      background: linear-gradient(45deg, #DDA0DD, #EE82EE);
-    }
-
-    .difficulty-btn.noob {
-      background: linear-gradient(45deg, #87CEEB, #B0E0E6);
-    }
-
-    .difficulty-btn.buchette {
-      background: linear-gradient(45deg, #DDA0DD, #EE82EE);
-    }
-
-    .difficulty-btn.easy {
-      background: linear-gradient(45deg, #4CAF50, #8BC34A);
-    }
-
-    .difficulty-btn.medium {
-      background: linear-gradient(45deg, #FF9800, #FFC107);
-    }
-
-    .difficulty-btn.hard {
-      background: linear-gradient(45deg, #F44336, #E91E63);
+    .difficulty-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px) scale(1.08);
     }
 
     .difficulty-btn.active {
       border-color: white;
       box-shadow: 0 0 10px rgba(255,255,255,0.5);
-      transform: scale(1.05);
+      background: rgba(255, 255, 255, 0.3);
     }
 
     .instructions {
@@ -201,22 +186,6 @@
       transition: all 0.3s ease;
       filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1.2) contrast(1.1);
       z-index: 5;
-    }
-
-    .gold-bar.noob {
-      filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.7)) brightness(1.1);
-    }
-
-    .gold-bar.buchette {
-      filter: drop-shadow(0 0 18px rgba(221, 160, 221, 0.7)) brightness(1.1) hue-rotate(290deg);
-    }
-
-    .gold-bar.noob {
-      filter: drop-shadow(0 0 15px rgba(135, 206, 235, 0.7)) brightness(1.1);
-    }
-
-    .gold-bar.buchette {
-      filter: drop-shadow(0 0 18px rgba(221, 160, 221, 0.7)) brightness(1.1) hue-rotate(290deg);
     }
 
     .gold-bar.easy {
@@ -291,11 +260,37 @@
       justify-content: center;
       padding: 10px;
       position: relative;
+      animation: floatAttack 2.5s ease-in-out infinite;
+    }
+
+    @keyframes floatAttack {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.03); }
+    }
+
+    .attack-mode-image:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    .attack-mode-image:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+
+    .attack-mode-image:nth-child(4) {
+      animation-delay: 0.6s;
+    }
+
+    .attack-mode-image:nth-child(5) {
+      animation-delay: 0.8s;
+    }
+
+    .attack-mode-image:nth-child(6) {
+      animation-delay: 1s;
     }
 
     .attack-mode-image:hover {
       background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
+      transform: translateY(-5px) scale(1.08);
     }
 
     .attack-mode-image.active {
@@ -623,10 +618,6 @@
       background: linear-gradient(45deg, #daa520, #ffd700);
     }
 
-    .hidden {
-      display: none;
-    }
-
     .coins-display {
       position: absolute;
       top: -20px;
@@ -677,22 +668,6 @@
       border-radius: 20px;
       font-weight: bold;
       margin: 10px 0;
-    }
-
-    .difficulty-badge.noob {
-      background: linear-gradient(45deg, #87CEEB, #B0E0E6);
-    }
-
-    .difficulty-badge.buchette {
-      background: linear-gradient(45deg, #DDA0DD, #EE82EE);
-    }
-
-    .difficulty-badge.noob {
-      background: linear-gradient(45deg, #87CEEB, #B0E0E6);
-    }
-
-    .difficulty-badge.buchette {
-      background: linear-gradient(45deg, #DDA0DD, #EE82EE);
     }
 
     .difficulty-badge.easy {
@@ -861,6 +836,34 @@
     let isAttacking = false;
     let audioContext = null;
     let currentDifficulty = "easy";
+
+    // Charger les données sauvegardées au démarrage
+    function loadGameData() {
+      const saved = {
+        difficulty: currentDifficulty,
+        attackMode: attackMode
+      };
+      
+      try {
+        const savedDifficulty = saved.difficulty;
+        const savedAttackMode = saved.attackMode;
+        
+        if (savedDifficulty) {
+          currentDifficulty = savedDifficulty;
+        }
+        if (savedAttackMode) {
+          attackMode = savedAttackMode;
+        }
+      } catch (e) {
+        console.log('Pas de sauvegarde trouvée');
+      }
+    }
+
+    // Sauvegarder automatiquement
+    function saveGameData() {
+      // Sauvegarde en mémoire (simulation)
+      // Dans un environnement réel, on utiliserait localStorage
+    }
 
     const goldBar = document.getElementById("goldBar");
     const hammer = document.getElementById("hammer");
@@ -1208,6 +1211,7 @@
       if (btnEl) btnEl.classList.add('active');
 
       attackBtn.textContent = `Frapper (${mode} coup${mode > 1 ? 's' : ''})`;
+      saveGameData();
     }
 
     function setDifficulty(difficulty) {
@@ -1220,6 +1224,7 @@
       
       goldBar.className = "gold-bar " + difficulty;
       
+      saveGameData();
       initGame();
     }
 
@@ -1331,6 +1336,18 @@
         comboIndicator.style.display = "none";
       }
     }, 1000);
+
+    // Charger les données sauvegardées
+    loadGameData();
+    
+    // Appliquer la difficulté sauvegardée
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+    document.querySelector(`.difficulty-btn.${currentDifficulty}`).classList.add('active');
+    
+    // Appliquer le mode d'attaque sauvegardé
+    setAttackMode(attackMode);
 
     initGame();
   </script>
